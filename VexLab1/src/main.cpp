@@ -18,7 +18,6 @@ using namespace vex;
 int main() {
   vexcodeInit();
   move(20);
-  move(20);
 }
 
 // Given a target distance and wheel diameter, drive straight for the given
