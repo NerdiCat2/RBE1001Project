@@ -1,7 +1,7 @@
 
 #include "vex.h"
 #include <iostream>
-#include "headerFile.h"
+#include "main.h"
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
@@ -33,9 +33,15 @@ void move(double cm) {
 void turnAngle(double angle, double track, double diameter) {
   double cm = (track * M_PI * angle) / 360;
   double degree = distanceToDegree(cm, track);
-  Motor1.rotateFor(degree, deg, 180, dps, false);
-  Motor10.rotateFor(-degree, deg, 180, dps, false);
+  Motor1.rotateFor(degree, deg, 40, rpm, false);
+  Motor10.rotateFor(-degree, deg, 40, rpm, false);
 }
+
+// Changes Distance in cm to degrees
+double distanceToDegree(double cm, double track) {
+  return (cm * 360 * 5) / (track * M_PI);
+}
+
 
 // Bumping code
 void bump() {
@@ -47,9 +53,4 @@ void bump() {
       Motor1.stop();
     vex::task::sleep(100);
   }
-}
-
-// Changes Distance in cm to degrees
-double distanceToDegree(double cm, double track) {
-  return (cm * 360 * 5) / (track * M_PI);
 }
