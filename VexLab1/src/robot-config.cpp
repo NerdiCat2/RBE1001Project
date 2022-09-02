@@ -8,8 +8,8 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor Motor1 = motor(PORT1, ratio18_1, false);
-motor Motor10 = motor(PORT10, ratio18_1, true);
+motor Motor1 = motor(PORT1, ratio18_1, true);
+motor Motor10 = motor(PORT10, ratio18_1, false);
 sonar RangeFinderE = sonar(Brain.ThreeWirePort.E);
 bumper BumperC = bumper(Brain.ThreeWirePort.C);
 
