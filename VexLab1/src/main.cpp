@@ -1,27 +1,28 @@
 
+#include "main.h"
 #include "vex.h"
 #include <iostream>
-#include "main.h"
+#include <math.h> 
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Motor1               motor         1               
-// Motor10              motor         10              
-// RangeFinderE         sonar         E, F            
-// BumperC              bumper        C               
+// Motor1               motor         1
+// Motor10              motor         10
+// RangeFinderE         sonar         E, F
+// BumperC              bumper        C
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 using namespace std;
 
 double wheelDiameter = 10.16;
 double track = 28.4;
-int globalRpm = 200;
+int globalRpm = 100;
 
 int main() {
   vexcodeInit();
   cout << "starting..." << endl;
-  star(50.8);
+  maze();
   cout << "end" << endl;
 }
 
@@ -60,35 +61,53 @@ void bump() {
   }
 }
 
-//make a square with sideLength
-void square(double sideLength){
+// make a square with sideLength
+void square(double sideLength) {
   cout << "square of " << sideLength << "cm..." << endl;
-  for(int i = 0; i<3; i++){
+  for (int i = 0; i < 3; i++) {
     move(sideLength);
     turnAngle(90);
   }
   move(sideLength);
 }
 
-//make a six sided star with sideLength
-void star(double sideLength){
+// make a six sided star with sideLength
+void star(double sideLength) {
   cout << "star of " << sideLength << "cm..." << endl;
-  for(int i = 0; i<4; i++){
+  for (int i = 0; i < 4; i++) {
     move(sideLength);
     turnAngle(143);
   }
   move(sideLength);
 }
 
-//drives in circle given circumference and fraction of circle to drive
-void circle(double c,int outerRpm,double fracOfCircle){
-  double innerC =(c - (.5*track))*fracOfCircle;
-  double outerC =(c + (.5*track))*fracOfCircle;
+// drives in circle given radius and fraction of circle to drive
+void circle(double r, double outerRpm, double fracOfCircle) {
+  double innerC = ((r - (.5 * track)) * 2 * M_PI) * fracOfCircle;
+  double outerC = ((r + (.5 * track)) * 2 * M_PI) * fracOfCircle;
   double innerD = distanceToDegree(innerC);
-  double outerD =  distanceToDegree(outerC);
-   
-  double innerRpm = innerD*(outerD *(1/outerRpm));
+  double outerD = distanceToDegree(outerC);
+  double innerRpm = innerD / (outerD * (1 / outerRpm));
+  cout << "Motor 1:  " << innerD << " degree, " << innerRpm << " rpm" << endl;
+  cout << "Motor 10: " << outerD << " degree, " << outerRpm << " rpm" << endl;
+  Motor1.rotateFor(innerD, deg, abs(int(innerRpm)), rpm, false);
+  Motor10.rotateFor(outerD, deg, abs(int(outerRpm)), rpm);
+}
 
-  Motor1.rotateFor(innerD, deg, innerRpm, rpm, false);
-  Motor10.rotateFor(outerD, deg, outerRpm, rpm);
+void maze(){
+  cout << "starting maze..." << endl;
+  circle(45.0,globalRpm,.25);
+  circle(-25.0,globalRpm,-.25);
+  double degree = distanceToDegree(12); 
+  Motor1.rotateFor(degree, deg, globalRpm, rpm, false);
+  Motor10.rotateFor(degree, deg, globalRpm, rpm);
+  turnAngle(45);
+  move(40.0);
+  degree = distanceToDegree(21); 
+  Motor1.rotateFor(-degree, deg, globalRpm, rpm);
+  Motor10.rotateFor(degree, deg, globalRpm, rpm);
+  move(-30.0);
+  
+  
+
 }
