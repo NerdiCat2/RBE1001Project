@@ -12,6 +12,8 @@ motor Motor1 = motor(PORT1, ratio18_1, true);
 motor Motor10 = motor(PORT10, ratio18_1, false);
 sonar RangeFinderE = sonar(Brain.ThreeWirePort.E);
 bumper BumperC = bumper(Brain.ThreeWirePort.C);
+line LineTrackerA = line(Brain.ThreeWirePort.A);
+line LineTrackerB = line(Brain.ThreeWirePort.B);
 
 // VEXcode generated functions
 

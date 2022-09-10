@@ -7,6 +7,8 @@ extern motor Motor1;
 extern motor Motor10;
 extern sonar RangeFinderE;
 extern bumper BumperC;
+extern line LineTrackerA;
+extern line LineTrackerB;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

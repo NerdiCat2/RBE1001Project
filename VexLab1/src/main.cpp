@@ -2,7 +2,7 @@
 #include "main.h"
 #include "vex.h"
 #include <iostream>
-#include <math.h> 
+#include <math.h>
 
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
@@ -11,6 +11,8 @@
 // Motor10              motor         10
 // RangeFinderE         sonar         E, F
 // BumperC              bumper        C
+// LineTrackerA         line          A
+// LineTrackerB         line          B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 using namespace std;
@@ -22,7 +24,7 @@ int globalRpm = 100;
 int main() {
   vexcodeInit();
   cout << "starting..." << endl;
-  maze();
+  wallStandOff(20.0, 5.0);
   cout << "end" << endl;
 }
 
@@ -38,7 +40,6 @@ void move(double cm) {
 void turnAngle(double angle) {
   cout << "turning " << angle << "degree..." << endl;
   double cm = (track * M_PI * angle) / 360;
-  cout << "turning " << cm << "cm..." << endl;
   double degree = distanceToDegree(cm);
   Motor1.rotateFor(degree, deg, globalRpm, rpm, false);
   Motor10.rotateFor(-degree, deg, globalRpm, rpm);
@@ -94,20 +95,67 @@ void circle(double r, double outerRpm, double fracOfCircle) {
   Motor10.rotateFor(outerD, deg, abs(int(outerRpm)), rpm);
 }
 
-void maze(){
+void maze() {
   cout << "starting maze..." << endl;
-  circle(45.0,globalRpm,.25);
-  circle(-25.0,globalRpm,-.25);
-  double degree = distanceToDegree(12); 
+  circle(45.0, globalRpm, .25);
+  circle(-25.0, globalRpm, -.25);
+  double degree = distanceToDegree(12);
   Motor1.rotateFor(degree, deg, globalRpm, rpm, false);
   Motor10.rotateFor(degree, deg, globalRpm, rpm);
   turnAngle(45);
   move(40.0);
-  degree = distanceToDegree(21); 
+  degree = distanceToDegree(21);
   Motor1.rotateFor(-degree, deg, globalRpm, rpm);
   Motor10.rotateFor(degree, deg, globalRpm, rpm);
   move(-30.0);
-  
-  
+}
 
+// Proportional Control
+// turn speed = k*(sens1-sens2)
+void lineFollow(double k) {
+  double turnSpeed;
+  Motor1.spin(fwd);
+  Motor10.spin(fwd);
+  cout << LineTrackerA.reflectivity(pct) << "   "
+       << LineTrackerB.reflectivity(pct) << endl;
+  vex::task::sleep(1000);
+  while (((LineTrackerA.reflectivity(pct) > 20) ||
+          (LineTrackerB.reflectivity(pct) > 20))) {
+    turnSpeed = k * (LineTrackerA.reflectivity() - LineTrackerB.reflectivity());
+    cout << LineTrackerA.reflectivity(pct) << "   "
+         << LineTrackerB.reflectivity(pct) << endl;
+    Motor1.setVelocity(-100 - turnSpeed, rpm);
+    Motor10.setVelocity(-100 + turnSpeed, rpm);
+    vex::task::sleep(30);
+  }
+  cout << LineTrackerA.reflectivity(pct) << "   "
+         << LineTrackerB.reflectivity(pct) << endl;
+  turnAngle(90);
+}
+
+// Standoff distance from object
+void standOff(double cm, double k) {
+  Motor1.spin(fwd);
+  Motor10.spin(fwd);
+  while(true){
+    cout << "distance: " << RangeFinderE.distance(distanceUnits::cm) << endl;
+    double diff = RangeFinderE.distance(distanceUnits::cm) - cm;
+    double turnSpeed = k * (diff);
+    Motor1.setVelocity(-turnSpeed, rpm);
+    Motor10.setVelocity(-turnSpeed, rpm);
+    vex::task::sleep(30);
+  }
+}
+
+void wallStandOff(double cm, double k) {
+  Motor1.spin(fwd);
+  Motor10.spin(fwd);
+  while(true){
+    cout << "distance: " << RangeFinderE.distance(distanceUnits::cm) << endl;
+    double diff = RangeFinderE.distance(distanceUnits::cm) - cm;
+    double turnSpeed = k * (diff);
+    Motor1.setVelocity(-100-turnSpeed, rpm);
+    Motor10.setVelocity(-100+turnSpeed, rpm);
+    vex::task::sleep(30);
+  }
 }
