@@ -129,7 +129,7 @@ void lineFollow(double k) {
     vex::task::sleep(30);
   }
   cout << LineTrackerA.reflectivity(pct) << "   "
-         << LineTrackerB.reflectivity(pct) << endl;
+       << LineTrackerB.reflectivity(pct) << endl;
   turnAngle(90);
 }
 
@@ -137,7 +137,7 @@ void lineFollow(double k) {
 void standOff(double cm, double k) {
   Motor1.spin(fwd);
   Motor10.spin(fwd);
-  while(true){
+  while (true) {
     cout << "distance: " << RangeFinderE.distance(distanceUnits::cm) << endl;
     double diff = RangeFinderE.distance(distanceUnits::cm) - cm;
     double turnSpeed = k * (diff);
@@ -150,12 +150,33 @@ void standOff(double cm, double k) {
 void wallStandOff(double cm, double k) {
   Motor1.spin(fwd);
   Motor10.spin(fwd);
-  while(true){
+  while (true) {
     cout << "distance: " << RangeFinderE.distance(distanceUnits::cm) << endl;
     double diff = RangeFinderE.distance(distanceUnits::cm) - cm;
     double turnSpeed = k * (diff);
-    Motor1.setVelocity(-100-turnSpeed, rpm);
-    Motor10.setVelocity(-100+turnSpeed, rpm);
+    Motor1.setVelocity(-100 - turnSpeed, rpm);
+    Motor10.setVelocity(-100 + turnSpeed, rpm);
     vex::task::sleep(30);
   }
+}
+
+void DetectObject(void) {
+  // takes a snapshot and searches for sig_s1
+  // you’ll want to use the signature that you defined above
+  vision_1.takeSnapshot(sig_s1);
+  // print the coordinates of the center of the object
+  // printf stands for ’print formatted’ and the %d tells it to print
+  // in integer format. The syntax can be found in online tutorials.
+  if (vision_1.objectCount > 0) {
+printf("x: %d, y %d\n", vision_1.largestObject.centerX,
+vision_1.largestObject.centerY));
+  }
+}
+
+void objectDirection(){
+
+}
+
+void objectDistance(){
+  
 }

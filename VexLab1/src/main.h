@@ -11,3 +11,4 @@ void lineFollow(double k);
 void motorSpeed(double turnSpeed);
 void standOff(double cm, double k);
 void wallStandOff(double cm, double k);
+void DetectObject(void);
