@@ -7,12 +7,12 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Motor1               motor         1
-// Motor10              motor         10
-// RangeFinderE         sonar         E, F
-// BumperC              bumper        C
-// LineTrackerA         line          A
-// LineTrackerB         line          B
+// Motor1               motor         1               
+// Motor10              motor         10              
+// RangeFinderE         sonar         E, F            
+// BumperC              bumper        C               
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 using namespace std;
@@ -174,9 +174,13 @@ vision_1.largestObject.centerY));
 }
 
 void objectDirection(){
+ 
 
 }
 
 void objectDistance(){
   
 }
+
+
+//test.....
