@@ -7,12 +7,13 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Motor1               motor         1               
-// Motor10              motor         10              
-// RangeFinderE         sonar         E, F            
-// BumperC              bumper        C               
-// LineTrackerA         line          A               
-// LineTrackerB         line          B               
+// Motor1               motor         1
+// Motor10              motor         10
+// RangeFinderE         sonar         E, F
+// BumperC              bumper        C
+// LineTrackerA         line          A
+// LineTrackerB         line          B
+// vision_1             vision        5
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 using namespace std;
@@ -24,7 +25,7 @@ int globalRpm = 100;
 int main() {
   vexcodeInit();
   cout << "starting..." << endl;
-  wallStandOff(20.0, 5.0);
+  objectAngle();
   cout << "end" << endl;
 }
 
@@ -160,28 +161,38 @@ void wallStandOff(double cm, double k) {
   }
 }
 
-void DetectObject(void) {
+void DetectObject() {
   // takes a snapshot and searches for sig_s1
   // you’ll want to use the signature that you defined above
-  vision_1.takeSnapshot(sig_s1);
+  vision_1.takeSnapshot(vision_1__BLUE_BALL);
   // print the coordinates of the center of the object
   // printf stands for ’print formatted’ and the %d tells it to print
   // in integer format. The syntax can be found in online tutorials.
   if (vision_1.objectCount > 0) {
-printf("x: %d, y %d\n", vision_1.largestObject.centerX,
-vision_1.largestObject.centerY));
+    printf("x: %d, y %d\n", vision_1.largestObject.centerX,
+           vision_1.largestObject.centerY);
   }
 }
 
-void objectDirection(){
- 
-
+void objectAngle() {
+  int x = 155;
+  Motor1.spin(fwd);
+  Motor10.spin(fwd);
+  Motor1.setVelocity(0, rpm);
+  Motor10.setVelocity(0, rpm);
+  cout << "finding object" << endl;
+  while (true) {
+    vision_1.takeSnapshot(vision_1__RED_BALL);
+    if (vision_1.objectCount > 0) {
+      x = vision_1.largestObject.centerX;
+      printf("x: %d\n", x);
+      cout << "found object" << endl;
+    } else {
+    }
+    double diff = x - 155;
+    double turnSpeed = 2 * (diff);
+    Motor1.setVelocity(-turnSpeed, rpm);
+    Motor10.setVelocity(turnSpeed, rpm);
+    vex::task::sleep(30);
+  }
 }
-
-void objectDistance(){
-  
-}
-
-
-//test.....
-//another change
