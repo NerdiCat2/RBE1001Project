@@ -3,6 +3,39 @@
 // [Name]               [Type]        [Port(s)]
 // LineTrackerA         line          A               
 // LineTrackerB         line          B               
+// Right_Drive          motor_group   2, 10           
+// Left_Drive           motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Right_Drive          motor_group   2, 10           
+// LEFT_Drive           motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// RIght                motor_group   2, 10           
+// LEFT_Drive           motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
 // RIght                motor_group   2, 10           
 // LEFT                 motor_group   1, 9            
 // doors                motor_group   3, 8            
