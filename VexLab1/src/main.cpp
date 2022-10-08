@@ -1,3 +1,87 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// RIght                motor_group   2, 10           
+// LEFT                 motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// LEFT                 motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Push                 motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// Motor7               motor         7               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LineTrackerA         line          A               
+// LineTrackerB         line          B               
+// Motor10              motor_group   2, 10           
+// Motor1               motor_group   1, 9            
+// doors                motor_group   3, 8            
+// arm                  motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "main.h"
 #include "vex.h"
