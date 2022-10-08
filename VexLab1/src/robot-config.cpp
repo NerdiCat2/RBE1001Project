@@ -8,13 +8,13 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-line LineTrackerA = line(Brain.ThreeWirePort.A);
-line LineTrackerB = line(Brain.ThreeWirePort.B);
-motor Right_DriveMotorA = motor(PORT2, ratio18_1, true);
-motor Right_DriveMotorB = motor(PORT10, ratio18_1, true);
+line LineTrackerLeft = line(Brain.ThreeWirePort.G);
+line LineTrackerRight = line(Brain.ThreeWirePort.H);
+motor Right_DriveMotorA = motor(PORT2, ratio18_1, false);
+motor Right_DriveMotorB = motor(PORT10, ratio18_1, false);
 motor_group Right_Drive = motor_group(Right_DriveMotorA, Right_DriveMotorB);
-motor Left_DriveMotorA = motor(PORT1, ratio18_1, false);
-motor Left_DriveMotorB = motor(PORT9, ratio18_1, false);
+motor Left_DriveMotorA = motor(PORT1, ratio18_1, true);
+motor Left_DriveMotorB = motor(PORT9, ratio18_1, true);
 motor_group Left_Drive = motor_group(Left_DriveMotorA, Left_DriveMotorB);
 motor doorsMotorA = motor(PORT3, ratio18_1, true);
 motor doorsMotorB = motor(PORT8, ratio18_1, false);

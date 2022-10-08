@@ -3,8 +3,8 @@ using namespace vex;
 extern brain Brain;
 
 // VEXcode devices
-extern line LineTrackerA;
-extern line LineTrackerB;
+extern line LineTrackerLeft;
+extern line LineTrackerRight;
 extern motor_group Right_Drive;
 extern motor_group Left_Drive;
 extern motor_group doors;

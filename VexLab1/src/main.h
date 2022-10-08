@@ -8,6 +8,7 @@ void openDoors();
 void closeDoors();
 void armUp(double d);
 void demoDay();
+void armTo(double pos);
 
 // void standOff(double cm, double k);
 // void wallStandOff(double cm, double k);
