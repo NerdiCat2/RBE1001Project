@@ -8,17 +8,18 @@ using code = vision::code;
 brain  Brain;
 
 // VEXcode device constructors
-motor Motor1 = motor(PORT1, ratio18_1, true);
-motor Motor10 = motor(PORT10, ratio18_1, false);
-sonar RangeFinderE = sonar(Brain.ThreeWirePort.E);
-bumper BumperC = bumper(Brain.ThreeWirePort.C);
 line LineTrackerA = line(Brain.ThreeWirePort.A);
 line LineTrackerB = line(Brain.ThreeWirePort.B);
-/*vex-vision-config:begin*/
-signature vision_1__BLUE_BALL = signature (1, -2849, -2081, -2465, 10103, 14043, 12073, 2, 0);
-signature vision_1__RED_BALL = signature (2, 10213, 12125, 11169, -1, 415, 207, 2.5, 0);
-vision vision_1 = vision (PORT5, 50, vision_1__BLUE_BALL, vision_1__RED_BALL);
-/*vex-vision-config:end*/
+motor Motor10MotorA = motor(PORT2, ratio18_1, true);
+motor Motor10MotorB = motor(PORT10, ratio18_1, true);
+motor_group Motor10 = motor_group(Motor10MotorA, Motor10MotorB);
+motor Motor1MotorA = motor(PORT1, ratio18_1, false);
+motor Motor1MotorB = motor(PORT9, ratio18_1, false);
+motor_group Motor1 = motor_group(Motor1MotorA, Motor1MotorB);
+motor doorsMotorA = motor(PORT6, ratio18_1, true);
+motor doorsMotorB = motor(PORT8, ratio18_1, false);
+motor_group doors = motor_group(doorsMotorA, doorsMotorB);
+motor arm = motor(PORT5, ratio18_1, false);
 
 // VEXcode generated functions
 
