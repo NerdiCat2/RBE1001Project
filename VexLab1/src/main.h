@@ -9,6 +9,11 @@ void closeDoors();
 void armUp(double d);
 void demoDay();
 void armTo(double pos);
+void pusher(double dist,double speed);
+void BlastBalls();
+void ResetPusher();
+void slowMove(double cm);
+void findBalls();
 
 // void standOff(double cm, double k);
 // void wallStandOff(double cm, double k);
