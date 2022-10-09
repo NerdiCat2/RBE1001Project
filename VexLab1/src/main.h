@@ -13,7 +13,9 @@ void pusher(double dist,double speed);
 void BlastBalls();
 void ResetPusher();
 void slowMove(double cm);
-void findBalls();
+void goTillLine(int directionMod);
+void reset();
+void demoDay2();
 
 // void standOff(double cm, double k);
 // void wallStandOff(double cm, double k);

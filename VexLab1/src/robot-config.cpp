@@ -21,6 +21,7 @@ motor doorsMotorB = motor(PORT8, ratio18_1, false);
 motor_group doors = motor_group(doorsMotorA, doorsMotorB);
 motor arm = motor(PORT5, ratio18_1, false);
 motor Push = motor(PORT7, ratio18_1, false);
+sonar RangeFinder = sonar(Brain.ThreeWirePort.E);
 
 // VEXcode generated functions
 

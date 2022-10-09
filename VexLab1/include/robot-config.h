@@ -10,6 +10,7 @@ extern motor_group Left_Drive;
 extern motor_group doors;
 extern motor arm;
 extern motor Push;
+extern sonar RangeFinder;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
